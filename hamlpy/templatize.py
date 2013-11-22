@@ -22,7 +22,7 @@ def decorate_templatize(func):
             #if the template has a source file, then only parse it if it is haml
             if os.path.splitext(origin)[1].lower() in ['.'+x.lower() for x in hamlpy.VALID_EXTENSIONS]:
                 hamlParser = hamlpy.Compiler()
-                html = hamlParser.process(src.decode('utf-8'))
+                html = hamlParser.process(src)
                 src = html.encode('utf-8')
         return func(src, origin)
     return templatize
